@@ -14,9 +14,16 @@
 - Optionally, delete the image : `docker rmi image_id`
 
 ## Additional remarks
-The names of the images have two parts : the name itself and the tag separated by a colom. The name is for a group of images and the tag corresponds to the specific image, its specialization.
+- The names of the images have two parts : the name itself and the tag separated by a colom. The name is for a group of images and the tag corresponds to the specific image, its specialization.
 
-`RUN` is an image build step, the state of the container after a `RUN` command will be committed to the container image. A dockerfile can have many `RUN` steps that layer on top of
+- `RUN` is an image build step, the state of the container after a `RUN` command will be committed to the container image. A dockerfile can have many `RUN` steps that layer on top of
 one another to build the image.
 
-`CMD` is the command the container executes by default when you launch the built image ,i.e. a new container. A dockerfile will only use the final `CMD` defined. 
+- `CMD` is the command the container executes by default when you launch the built image ,i.e. a new container. A dockerfile will only use the final `CMD` defined. 
+
+- To push the image tagged as `goals:latest` to docker hub, follow these steps:
+    - create a new repository on docker hub : `jfmolderez/goals` 
+    - retag the local image with a tag refering to this new repo : `docker tag goals:latest jfmolderez/goals:tagname`
+    - push the image to docker hub : `docker push jfmolderez/goals:tagname` 
+    - you might be required to login before : `docker login`
+    
